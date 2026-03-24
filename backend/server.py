@@ -3,7 +3,7 @@ import os
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import mimetypes
 
-PORT = 8085
+PORT = int(os.environ.get('PORT', 8085))
 DB_FILE = "doodles_db.json"
 
 print(f"Loading database from {DB_FILE}...")
@@ -111,7 +111,9 @@ class MultiplayerHandler(BaseHTTPRequestHandler):
         pass
 
 if __name__ == '__main__':
-    httpd = HTTPServer(('', PORT), MultiplayerHandler)
-    print(f"Doodle Marathon Data Engine running on http://localhost:{PORT}")
+    # Listen on '0.0.0.0' for Render to be able to reach the service
+    httpd = HTTPServer(('0.0.0.0', PORT), MultiplayerHandler)
+    print(f"Doodle Marathon Data Engine running on port {PORT}")
     print("Press Ctrl+C to stop.")
     httpd.serve_forever()
+
