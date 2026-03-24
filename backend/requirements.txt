@@ -1,0 +1,2 @@
+# No external dependencies are required for the standard library backend.
+# The server.py file uses built-in Python modules (http.server, json, os, mimetypes).

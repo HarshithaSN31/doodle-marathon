@@ -1,0 +1,5 @@
+/backend/doodles_db.json
+/backend/__pycache__/
+*.pyc
+.DS_Store
+.env
