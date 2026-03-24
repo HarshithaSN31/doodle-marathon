@@ -403,6 +403,9 @@
     </div>
 
     <script>
+        // Placeholder for Render environment injection (via inject-env.js)
+        window.BACKEND_API_URL = null;
+
         const canvas = document.getElementById('drawCanvas');
         const ctx = canvas.getContext('2d');
         const colorPicker = document.getElementById('colorPicker');
@@ -422,7 +425,7 @@
 
         const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
             ? 'http://localhost:8085' 
-            : ''; // Update with your actual deployed backend URL
+            : (window.BACKEND_API_URL || 'https://doodle-marathon.onrender.com'); 
 
         // Setup unique device ID for ownership
         let myClientId = localStorage.getItem('doodleClientId');
